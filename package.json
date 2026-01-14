@@ -1,0 +1,30 @@
+{
+  "name": "analyze-feed-serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "offline": "serverless offline",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "build": "serverless package",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.150",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.19.3",
+    "esbuild": "^0.24.2",
+    "jest": "^29.7.0",
+    "serverless": "^3.40.0",
+    "serverless-esbuild": "^1.54.0",
+    "serverless-offline": "^13.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3"
+  }
+}

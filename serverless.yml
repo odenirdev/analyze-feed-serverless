@@ -1,0 +1,55 @@
+service: ${file(./package.json):name}
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  timeout: 30
+  environment:
+    NODE_OPTIONS: "--enable-source-maps"
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: linked
+    sourcesContent: true
+    target: node20
+    platform: node
+    keepNames: true
+    metafile: false
+    external:
+      - aws-sdk
+  serverless-offline:
+    httpPort: 3000
+    lambdaPort: 3002
+    useChildProcesses: true
+    reloadHandler: true
+    timeout: 30000
+
+functions:
+  analyze:
+    handler: src/handlers/analyze_feed.handler
+    timeout: 30
+    events:
+      - http:
+          method: post
+          path: analyze-feed
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - lang
+            allowCredentials: false
+            maxAge: 86400
