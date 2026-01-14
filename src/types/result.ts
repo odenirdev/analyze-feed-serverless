@@ -3,7 +3,7 @@ export type Result<T> =
       error: true;
       message: string;
       data?: undefined;
-      details?: any;
+      details?: unknown;
     }
   | {
       error: false;

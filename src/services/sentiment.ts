@@ -58,6 +58,7 @@ export class SentimentService {
     distribution: SentimentDistribution;
     message_sentiments: MessageSentiment[];
   } {
+    void _meta;
     const message_sentiments: MessageSentiment[] = [];
 
     let positive = 0;

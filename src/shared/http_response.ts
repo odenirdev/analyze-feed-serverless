@@ -2,7 +2,7 @@ export class HttpResponse {
   static error(params: {
     statusCode?: number;
     message?: string;
-    details?: any;
+    details?: unknown;
   }) {
     const {
       statusCode = 500,
@@ -29,7 +29,7 @@ export class HttpResponse {
   static success(params: {
     statusCode?: number;
     message?: string;
-    data?: any;
+    data?: unknown;
   }) {
     return {
       statusCode: params.statusCode || 200,
